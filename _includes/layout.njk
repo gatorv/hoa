@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>{{ sheet.config.title }}</title>
+
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta http-equiv="X-Frame-Options" content="DENY" />
+  <meta http-equiv="Referrer-Policy" content="no-referrer" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#22c55e'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    .animate-stripes {
+      background: repeating-linear-gradient(
+        45deg,
+        rgba(34, 197, 94, 0.9),
+        rgba(34, 197, 94, 0.9) 10px,
+        rgba(34, 197, 94, 0.7) 10px,
+        rgba(34, 197, 94, 0.7) 20px
+      );
+      animation: moveStripes 1s linear infinite;
+    }
+
+    @keyframes moveStripes {
+      from {
+        background-position: 0 0;
+      }
+      to {
+        background-position: 40px 0;
+      }
+    }
+  </style>
+
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+
+  {{ content | safe }}
+
+  <script>
+    function display(targetId) {
+      const el = document.getElementById(targetId);
+      if (!el) return;
+
+      if (el.classList.contains('notvisible')) {
+        el.classList.remove('max-h-0', 'opacity-0');
+        el.classList.add('max-h-[2500px]', 'opacity-100');
+        el.classList.remove('notvisible');
+      } else {
+        el.classList.add('max-h-0', 'opacity-0');
+        el.classList.remove('max-h-[2500px]', 'opacity-100');
+        el.classList.add('notvisible');
+      }
+    }
+    function toggle(targetId) {
+      const sections = ['paidList', 'pendingList'];
+
+      sections.forEach(id => {
+        const el = document.getElementById(id);
+        if (!el) return;
+
+        if (id === targetId) {
+          el.classList.remove('max-h-0', 'opacity-0');
+          el.classList.add('max-h-[2500px]', 'opacity-100');
+        } else {
+          el.classList.add('max-h-0', 'opacity-0');
+          el.classList.remove('max-h-[2500px]', 'opacity-100');
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>

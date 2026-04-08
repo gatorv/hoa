@@ -1,0 +1,82 @@
+---
+layout: layout.njk
+---
+
+<div class="max-w-4xl mx-auto p-4">
+
+  <header class="mb-6 text-center">
+    <h1 class="text-2xl font-bold">{{ sheet.config.title }}</h1>
+    <p class="text-sm text-gray-500">
+      {{ sheet.config.descripcion_1 }}
+    </p>
+  </header>
+
+  <section class="bg-white rounded-2xl shadow p-6 mb-6">
+
+    <div class="w-full bg-gray-200 rounded-full h-6 overflow-hidden">
+    <div
+      class="h-6 rounded-full flex items-center justify-center text-xs font-semibold text-white relative overflow-hidden"
+      style="width: {{ sheet.progress }}%"
+    >
+      <!-- Animated background -->
+      <div class="absolute inset-0 animate-stripes"></div>
+
+      <!-- Centered text -->
+      <span class="relative z-10">
+        {{ sheet.progress }}%
+      </span>
+    </div>
+  </div>
+
+    <p class="text-center text-gray-600">
+      {{ sheet.houses.length }} de {{ sheet.config.total_houses }} casas pagadas
+    </p>
+
+    <p class="text-center text-gray-600">
+      💵 {{ sheet.totalCollected }} de {{ sheet.goalToCollect }} recaudado 
+    </p>
+
+  </section>
+
+  <div class="flex justify-center gap-4 mb-4">
+    <button
+      onclick="display('paidList')"
+      class="px-4 py-2 bg-green-500 text-white rounded-lg"
+    >
+      Casas Pagadas
+    </button>
+
+    <button
+      onclick="display('pendingList')"
+      class="px-4 py-2 bg-red-500 text-white rounded-lg"
+    >
+      Casas Pendientes
+    </button>
+  </div>
+
+  <div class="grid md:grid-cols-2 gap-6">
+    <section id="paidList" class="bg-white rounded-2xl shadow p-5 overflow-hidden transition-all duration-300 ease-in-out max-h-0 opacity-0 notvisible">
+      <h2 class="text-lg font-semibold mb-3 text-green-600">Pagadas ✅</h2>
+      <ul class="space-y-1">
+        {% for house in sheet.houses %}
+          <li>Casa {{ house }}</li>
+        {% endfor %}
+      </ul>
+    </section>
+
+    <section id="pendingList" class="bg-white rounded-2xl shadow p-5 overflow-hidden transition-all duration-300 ease-in-out max-h-0 opacity-0 notvisible">
+      <h2 class="text-lg font-semibold mb-3 text-red-600">Pendientes ❌</h2>
+      <ul class="space-y-1">
+        {% for house in sheet.pending %}
+          <li>Casa {{ house }}</li>
+        {% endfor %}
+      </ul>
+    </section>
+
+  </div>
+
+  <p class="text-xs text-gray-500 text-center mt-4">
+    Actualizado el {{ sheet.updatedAtFormatted }}
+  </p>
+
+</div>

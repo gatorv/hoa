@@ -1,0 +1,19 @@
+{
+  "name": "hoa-application",
+  "version": "1.0.0",
+  "description": "Sample Application built with Eleventy and Google APIs",
+  "main": "index.js",
+  "scripts": {
+    "build": "eleventy",
+    "start": "eleventy --serve"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "@11ty/eleventy": "^3.1.5",
+    "dotenv": "^17.4.1",
+    "googleapis": "^171.4.0"
+  }
+}
