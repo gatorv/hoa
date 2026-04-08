@@ -21,8 +21,8 @@ jobs:
         env:
           GOOGLE_SERVICE_ACCOUNT_KEY: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_KEY }}
           SHEET_ID: ${{ secrets.SHEET_ID }}
-          SHEET_GENERALES: ${{ secrets.GENERALES }}
-          SHEET_CASAS: ${{ secrets.CASAS }}
+          SHEET_GENERALES: ${{ vars.SHEET_GENERALES }}
+          SHEET_CASAS: ${{ vars.SHEET_CASAS }}
 
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/pages-action@v1
