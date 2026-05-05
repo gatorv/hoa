@@ -141,3 +141,5 @@ vite.config.ts.timestamp-*
 Eleventy output directory
 _site
 _site/*
+
+.DS_Store
