@@ -56,7 +56,7 @@ layout: layout.njk
 
   <div class="grid md:grid-cols-2 gap-6">
     <section id="paidList" class="bg-white rounded-2xl shadow p-5 overflow-hidden transition-all duration-300 ease-in-out max-h-0 opacity-0 notvisible">
-      <h2 class="text-lg font-semibold mb-3 text-green-600">Pagadas ✅</h2>
+      <h2 class="text-lg font-semibold mb-3 text-green-600">Pagadas ({{ sheet.houses.length }}) ✅</h2>
       <ul class="space-y-1">
         {% for house in sheet.houses %}
           <li>Casa {{ house }}</li>
@@ -65,7 +65,7 @@ layout: layout.njk
     </section>
 
     <section id="pendingList" class="bg-white rounded-2xl shadow p-5 overflow-hidden transition-all duration-300 ease-in-out max-h-0 opacity-0 notvisible">
-      <h2 class="text-lg font-semibold mb-3 text-red-600">Pendientes ❌</h2>
+      <h2 class="text-lg font-semibold mb-3 text-red-600">Pendientes ({{ sheet.pending.length }}) ❌</h2>
       <ul class="space-y-1">
         {% for house in sheet.pending %}
           <li>Casa {{ house }}</li>
@@ -76,7 +76,7 @@ layout: layout.njk
   </div>
 
   <p class="text-xs text-gray-500 text-center mt-4">
-    Actualizado el {{ sheet.updatedAtFormatted }}
+    Actualizado al {{ sheet.updatedAtFormatted }}
   </p>
 
 </div>
