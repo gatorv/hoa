@@ -26,9 +26,9 @@ jobs:
           SHEET_CASAS: ${{ vars.SHEET_CASAS }}
 
       - name: Deploy to Cloudflare Pages
-        uses: cloudflare/pages-action@v1
+        uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: realflamingos
-          directory: _site
+          command: pages deploy _site --project-name=realflamingos
+
